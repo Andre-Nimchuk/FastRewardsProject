@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
         padding: 20,
         height: '626px',
         width: '526px',
+        borderRadius: '10px',
     },
 
     loginTitle: {
@@ -75,8 +76,40 @@ const useStyles = makeStyles((theme) => ({
     },
 
     linkStyle: {
-        color: ''
+        color: '#B2B7BB',
+        letterSpacing: '0.005em',
+        textDecorationLine: 'underline',
+        fontFamily: 'sans-serif',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '16px',
+        marginTop: '20px',
     },
+
+    questPStyle: {
+        color: '#B2B7BB',
+        letterSpacing: '0.005em',
+        fontFamily: 'sans-serif',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '16px',
+        marginTop: '20px',
+    },
+
+    linkRegStyle: {
+        color: '#4285F4',
+        letterSpacing: '0.005em',
+        fontFamily: 'sans-serif',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: '16px',
+        marginTop: '20px',
+    },
+
+    passInputStyle: {
+        borderRadius: '10px',
+    },
+
   }));
 
   const Login = function SectionInputs() {
@@ -114,11 +147,13 @@ const useStyles = makeStyles((theme) => ({
                     <Grid className={classes.textAreaBlock}>
                         <Grid className={classes.inputStyle}>
                             <TextField 
-                                id="outlined-basic" 
+                                id="outlined-basic"
+                                className="inputRounded"
                                 label="Email address" 
                                 variant="outlined" 
                                 placeholder="Enter email" 
-                                fullWidth required 
+                                fullWidth
+                                required
                                 />
                         </Grid>
                     </Grid>
@@ -127,6 +162,7 @@ const useStyles = makeStyles((theme) => ({
                             <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
                                 <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                                     <OutlinedInput
+                                    className={classes.passInputStyle}
                                     id="outlined-adornment-password"
                                     placeholder="Enter password"
                                     required
@@ -159,6 +195,14 @@ const useStyles = makeStyles((theme) => ({
                         <Grid className={classes.textAreaBlock}>
                             <Link className={classes.linkStyle} href="#">
                                 Forgot your password?
+                            </Link>
+                        </Grid>
+                    </Typography>
+                    <Typography>
+                        <Grid className={classes.textAreaBlock}>
+                        <p className={classes.questPStyle}>Don`t have an account yet?&nbsp;</p>
+                            <Link className={classes.linkRegStyle} href="#">
+                                Register
                             </Link>
                         </Grid>
                     </Typography>
