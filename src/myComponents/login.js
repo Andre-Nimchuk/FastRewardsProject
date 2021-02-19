@@ -18,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
 
     paperStyle: {
         padding: 20,
-        height: '626px',
-        width: '526px',
+        height: '686px',
+        width: '626px',
         borderRadius: '10px',
     },
 
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     loginBlockStyle: {
         display: 'flex',
         justifyContent: 'flex-end',
-        /* paddingTop: '137px', */
+        paddingTop: '137px',
         paddingRight: '24px',
     },
 
@@ -113,6 +113,16 @@ const useStyles = makeStyles((theme) => ({
     passInputStyle: {
         borderRadius: '10px',
     },
+
+    eyeIconStyle: {
+        color: 'red',
+    },
+
+    styleHelperText: {
+        color: 'red',
+        fontSize: '13px',
+        marginLeft: '20px',
+    },
   }));
 
   const Login = function SectionInputs({}) {
@@ -152,7 +162,8 @@ const useStyles = makeStyles((theme) => ({
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
-
+    
+    //validation
     const handleSubmitForm = (event) => {
         event.preventDefault();
         /* (values.email != false && values.password != false) ? 
@@ -197,9 +208,10 @@ const useStyles = makeStyles((theme) => ({
                             error
                             className="inputRounded"
                             id="outlined-error-helper-text"
-                            label="Error"
+                            label="Email address"
                             onChange={handleChangeEmail('email')}
-                            helperText="Incorrect entry."
+                            helperText="Email required"
+                            placeholder="Enter email" 
                             variant="outlined"
                             fullWidth
                             />
@@ -235,16 +247,38 @@ const useStyles = makeStyles((theme) => ({
                                     labelWidth={70}/>
                                     </>
                                     : 
-                                    <TextField
-                                    error
-                                    onChange={handleChangeVisibilPass('password')}
-                                    value={values.password}
-                                    id="outlined-error-helper-text"
-                                    label="Error"
-                                    helperText="Incorrect entry."
-                                    variant="outlined"
-                                    />
-                                    }
+                                    <>
+                                    <InputLabel error  htmlFor="outlined-adornment-password">Password</InputLabel>
+                                    
+                                        <OutlinedInput
+                                        error
+                                        className={classes.passInputStyle}
+                                        id="outlined-error-hepler-text"
+                                        placeholder="Enter password"
+                                        label="Password"
+                                        helperText="Required password"
+                                        type={values.showPassword ? 'text' : 'password'}
+                                        onChange={handleChangeVisibilPass('password')}
+                                        helperText="Required password"
+                                        variant="outlined"
+                                        value={values.password}
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                className={classes.eyeIconStyle}
+                                                aria-label="toggle password visibility"
+                                                onClick={handleClickShowPassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                                >
+                                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        }
+                                        labelWidth={70}/>
+                                        <p className={classes.styleHelperText}>Password required</p>
+                                    </>
+                                    } 
                             </FormControl>
                         </Grid>
                     </Grid>
