@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     paperStyle: {
         padding: 20,
         height: '686px',
-        width: '626px',
+        width: '526px',
         borderRadius: '10px',
     },
 
@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
     loginBlockStyle: {
         display: 'flex',
         justifyContent: 'flex-end',
-        paddingTop: '137px',
         paddingRight: '24px',
     },
 
