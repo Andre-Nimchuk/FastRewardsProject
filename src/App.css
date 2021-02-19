@@ -8,3 +8,9 @@
 .inputRounded .MuiOutlinedInput-root{
   border-radius: 10px;
 }
+.App {
+  height: 100%;
+}
+#root {
+  height: 100vh;
+}

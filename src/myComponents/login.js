@@ -1,15 +1,18 @@
 import React from 'react';
-import clsx from 'clsx';
 import '../App.css';
+import clsx from 'clsx';
 import { Button, Grid, Paper, TextField, Typography, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Input from '@material-ui/core/Input';
 import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+
 
 const useStyles = makeStyles((theme) => ({
 
@@ -34,7 +37,8 @@ const useStyles = makeStyles((theme) => ({
     loginBlockStyle: {
         display: 'flex',
         justifyContent: 'flex-end',
-        margin: '137px 24px 0 0',
+        /* paddingTop: '137px', */
+        paddingRight: '24px',
     },
 
     inputStyle: {
@@ -109,24 +113,36 @@ const useStyles = makeStyles((theme) => ({
     passInputStyle: {
         borderRadius: '10px',
     },
-
   }));
 
-  const Login = function SectionInputs() {
+  const Login = function SectionInputs({}) {
 
     const classes = useStyles();
 
     const [values, setValues] = React.useState({
       amount: '',
+      email: '',
       password: '',
       weight: '',
       weightRange: '',
       showPassword: false,
     });
 
+    const [errorEmail, setErrorEmail] = React.useState(false);
+
+    const [errorPassword, setErrorPassword] = React.useState(false);
+    /* console.log(values.email);
+    console.log(values.password); */
     //my function inputs
-    const handleChange = (prop) => (event) => {
+
+    const handleChangeVisibilPass = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
+        !values.password && setErrorPassword(false);
+      };
+
+    const handleChangeEmail = (prop) => (event) => {
+        setValues({ ...values, [prop]: event.target.value });
+        !values.email && setErrorEmail(false);
       };
 
     const handleClickShowPassword = () => {
@@ -137,38 +153,72 @@ const useStyles = makeStyles((theme) => ({
         event.preventDefault();
     };
 
+    const handleSubmitForm = (event) => {
+        event.preventDefault();
+        /* (values.email != false && values.password != false) ? 
+            alert("Your email: " + values.email +"\n"+"Your value: " + values.password) : setErrorEmail(true); */
+            if (values.email != false && values.password != false) { 
+                alert("Your email: " + values.email +"\n"+"Your value: " + values.password);
+            } else {
+                setErrorEmail(true);
+                setErrorPassword(true);
+            }
+    };
+
+    //take info from form
+
+
+    //validation
+   /*  const {register, handleSubmitForm} = useForm() */
+    //
     return(
         <Grid>
             <Grid className={classes.loginBlockStyle}>
+            <form onSubmit={(event) => handleSubmitForm(event)}>
                 <Paper elevation={10} className={classes.paperStyle}>
                     <Grid>
-                    <p className={classes.loginTitle}>Login</p>
+                     <Grid className={classes.loginTitle}>Login</Grid> 
                     </Grid>
                     <Grid className={classes.textAreaBlock}>
                         <Grid className={classes.inputStyle}>
+                        {!errorEmail ? 
                             <TextField 
                                 id="outlined-basic"
                                 className="inputRounded"
                                 label="Email address" 
                                 variant="outlined" 
+                                onChange={handleChangeEmail('email')}
                                 placeholder="Enter email" 
                                 fullWidth
-                                required
-                                />
+                                name="title" 
+                            /> 
+                            : 
+                            <TextField
+                            error
+                            className="inputRounded"
+                            id="outlined-error-helper-text"
+                            label="Error"
+                            onChange={handleChangeEmail('email')}
+                            helperText="Incorrect entry."
+                            variant="outlined"
+                            fullWidth
+                            />
+                        } 
                         </Grid>
                     </Grid>
                     <Grid className={classes.textAreaBlock}>
                         <Grid className={classes.inputStyle}>
                             <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+                            {!errorPassword ? 
+                                <>
                                 <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                                     <OutlinedInput
                                     className={classes.passInputStyle}
                                     id="outlined-adornment-password"
                                     placeholder="Enter password"
-                                    required
                                     type={values.showPassword ? 'text' : 'password'}
+                                    onChange={handleChangeVisibilPass('password')}
                                     value={values.password}
-                                    onChange={handleChange('password')}
                                     endAdornment={
                                         <InputAdornment position="end">
                                             <IconButton
@@ -181,14 +231,26 @@ const useStyles = makeStyles((theme) => ({
                                             </IconButton>
                                         </InputAdornment>
                                     }
-                                    labelWidth={70}
+                                    
+                                    labelWidth={70}/>
+                                    </>
+                                    : 
+                                    <TextField
+                                    error
+                                    onChange={handleChangeVisibilPass('password')}
+                                    value={values.password}
+                                    id="outlined-error-helper-text"
+                                    label="Error"
+                                    helperText="Incorrect entry."
+                                    variant="outlined"
                                     />
+                                    }
                             </FormControl>
                         </Grid>
                     </Grid>
                     <Grid className={classes.textAreaBlock}>
                         <Grid className={classes.buttonLogInStyle}>
-                            <Button className={classes.logInButtonStyle} type="submit" color="primary" variant="contained" fullWidth>Log in</Button>
+                            <Button className={classes.logInButtonStyle} type="submit" color="primary" variant="contained" fullWidth >Log in</Button>
                         </Grid>
                     </Grid>
                     <Typography>
@@ -200,13 +262,14 @@ const useStyles = makeStyles((theme) => ({
                     </Typography>
                     <Typography>
                         <Grid className={classes.textAreaBlock}>
-                        <p className={classes.questPStyle}>Don`t have an account yet?&nbsp;</p>
+                         <Grid className={classes.questPStyle}>Don`t have an account yet?&nbsp;</Grid> 
                             <Link className={classes.linkRegStyle} href="#">
                                 Register
                             </Link>
                         </Grid>
                     </Typography>
                 </Paper>
+                </form>
             </Grid>
         </Grid>
     );
