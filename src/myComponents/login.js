@@ -161,7 +161,7 @@ const useStyles = makeStyles((theme) => ({
 
   const Login = function SectionInputs({}) {
 
-    const classes = useStyles();
+    const classes = useStyles(); 
 
     const [values, setValues] = React.useState({
       amount: '',
@@ -175,9 +175,6 @@ const useStyles = makeStyles((theme) => ({
     const [errorEmail, setErrorEmail] = React.useState(false);
 
     const [errorPassword, setErrorPassword] = React.useState(false);
-    /* console.log(values.email);
-    console.log(values.password); */
-    //my function inputs
 
     const handleChangeVisibilPass = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -200,8 +197,6 @@ const useStyles = makeStyles((theme) => ({
     //validation
     const handleSubmitForm = (event) => {
         event.preventDefault();
-        /* (values.email != false && values.password != false) ? 
-            alert("Your email: " + values.email +"\n"+"Your value: " + values.password) : setErrorEmail(true); */
             if (values.email != false && values.password != false) { 
                 alert("Your email: " + values.email +"\n"+"Your value: " + values.password);
             } else {
@@ -209,13 +204,7 @@ const useStyles = makeStyles((theme) => ({
                 setErrorPassword(true);
             }
     };
-
-    //take info from form
-
-
-    //validation
-   /*  const {register, handleSubmitForm} = useForm() */
-    //
+    
     return(
         <Grid>
             <Grid className={classes.loginBlockStyle}>
@@ -290,10 +279,8 @@ const useStyles = makeStyles((theme) => ({
                                         id="outlined-error-hepler-text"
                                         placeholder="Enter password"
                                         label="Password"
-                                        helperText="Required password"
                                         type={values.showPassword ? 'text' : 'password'}
                                         onChange={handleChangeVisibilPass('password')}
-                                        helperText="Required password"
                                         variant="outlined"
                                         value={values.password}
                                         endAdornment={
