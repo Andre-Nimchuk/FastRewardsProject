@@ -15,12 +15,18 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 
 const useStyles = makeStyles((theme) => ({
-
     paperStyle: {
         padding: 20,
         height: '686px',
         width: '526px',
         borderRadius: '10px',
+        [theme.breakpoints.down("md")]: {
+            height: '600px',
+        },
+        [theme.breakpoints.down("sm")]: {
+            height: '400px',
+            width: '310px',
+        },
     },
 
     loginTitle: {
@@ -30,6 +36,12 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: "bold",
         fontSize: 30,
         lineHeight: 7,
+        [theme.breakpoints.down("md")]: {
+            lineHeight: 5,
+        },
+        [theme.breakpoints.down("sm")]: {
+            lineHeight: 3,
+        },
         display: "flex",
         justifyContent: "center",
     },
@@ -38,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'flex-end',
         paddingRight: '24px',
+        [theme.breakpoints.down("sm")]: {
+            paddingRight: '0px',
+        },
     },
 
     inputStyle: {
@@ -71,11 +86,19 @@ const useStyles = makeStyles((theme) => ({
         background: 'linear-gradient(90deg, #FF9146 0%, #FF351B 100%)',
         padding: '10px',
         fontSize: '18px',
+        [theme.breakpoints.down("sm")]: {
+            fontSize: '14px',
+            padding: '5px',
+        },
     },
 
     buttonLogInStyle: {
         width: '200px',
         marginTop: '100px',
+        [theme.breakpoints.down("sm")]: {
+            width: '170px',
+            marginTop: '50px',
+        },
     },
 
     linkStyle: {
@@ -87,6 +110,10 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'normal',
         fontSize: '16px',
         marginTop: '20px',
+        [theme.breakpoints.down("sm")]: {
+            fontSize: '13px',
+            marginTop: '10px',
+        },
     },
 
     questPStyle: {
@@ -97,6 +124,10 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'normal',
         fontSize: '16px',
         marginTop: '20px',
+        [theme.breakpoints.down("sm")]: {
+            fontSize: '13px',
+            marginTop: '10px',
+        },
     },
 
     linkRegStyle: {
@@ -107,6 +138,10 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'normal',
         fontSize: '16px',
         marginTop: '20px',
+        [theme.breakpoints.down("sm")]: {
+            fontSize: '13px',
+            marginTop: '10px',
+        },
     },
 
     passInputStyle: {
