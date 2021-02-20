@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down("md")]: {
             height: '600px',
         },
-        [theme.breakpoints.down("sm")]: {
+        [theme.breakpoints.down("xs")]: {
             height: '400px',
             width: '310px',
         },
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down("md")]: {
             lineHeight: 5,
         },
-        [theme.breakpoints.down("sm")]: {
+        [theme.breakpoints.down("xs")]: {
             lineHeight: 3,
         },
         display: "flex",
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'flex-end',
         paddingRight: '24px',
-        [theme.breakpoints.down("sm")]: {
+        [theme.breakpoints.down("xs")]: {
             paddingRight: '0px',
         },
     },
@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
         background: 'linear-gradient(90deg, #FF9146 0%, #FF351B 100%)',
         padding: '10px',
         fontSize: '18px',
-        [theme.breakpoints.down("sm")]: {
+        [theme.breakpoints.down("xs")]: {
             fontSize: '14px',
             padding: '5px',
         },
@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
     buttonLogInStyle: {
         width: '200px',
         marginTop: '100px',
-        [theme.breakpoints.down("sm")]: {
+        [theme.breakpoints.down("xs")]: {
             width: '170px',
             marginTop: '50px',
         },
@@ -110,7 +110,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'normal',
         fontSize: '16px',
         marginTop: '20px',
-        [theme.breakpoints.down("sm")]: {
+        [theme.breakpoints.down("xs")]: {
             fontSize: '13px',
             marginTop: '10px',
         },
@@ -124,7 +124,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'normal',
         fontSize: '16px',
         marginTop: '20px',
-        [theme.breakpoints.down("sm")]: {
+        [theme.breakpoints.down("xs")]: {
             fontSize: '13px',
             marginTop: '10px',
         },
@@ -138,7 +138,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'normal',
         fontSize: '16px',
         marginTop: '20px',
-        [theme.breakpoints.down("sm")]: {
+        [theme.breakpoints.down("xs")]: {
             fontSize: '13px',
             marginTop: '10px',
         },
